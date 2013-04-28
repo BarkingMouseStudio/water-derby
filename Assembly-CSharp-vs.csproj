@@ -44,6 +44,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\GameBehaviour.cs" />
+     <Compile Include="Assets\Scripts\ParticleBehaviour.cs" />
+     <Compile Include="Assets\Scripts\ScreenBehaviour.cs" />
+     <Compile Include="Assets\Scripts\SuccessBehavior.cs" />
      <Compile Include="Assets\Scripts\TargetBehaviour.cs" />
      <Compile Include="Assets\Scripts\TargetsBehaviour.cs" />
      <Compile Include="Assets\Scripts\WaterGunBehavior.cs" />
