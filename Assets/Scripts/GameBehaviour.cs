@@ -16,7 +16,7 @@ public class GameBehaviour : MonoBehaviour {
   private bool isActiveGame = false;
   private RaycastHit[] hits;
 	
-  private float gameDuration = 10;
+  private float gameDuration = 30;
   private float time;
   	
   // Use this for initialization
@@ -66,7 +66,7 @@ public class GameBehaviour : MonoBehaviour {
       }
 	}
 	if (isActiveGame) {
-	  time = Time.deltaTime;
+	  time += Time.deltaTime;
 	  if (time > gameDuration) {
 	    Debug.Log("GameOver");
 	    isActiveGame = false;

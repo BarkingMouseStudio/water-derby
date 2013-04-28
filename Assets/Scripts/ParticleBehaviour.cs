@@ -17,7 +17,7 @@ public class ParticleBehaviour : MonoBehaviour {
         hit = hits[i];
         Debug.Log(hit.transform.name);
         target = hit.transform.GetComponent<TargetBehaviour>();
-        target.hitTime += 0.2f; 
+        target.hitTime += 0.05f; 
       }
 	}
 }

@@ -53,9 +53,6 @@ public class TargetsBehaviour : MonoBehaviour {
       target.number = GetUnusedNumber();
       target.transform.rotation = Quaternion.Euler(0, 90, 0);
 
-      if (i > 5) {
-        hitString += target.number + ",";
-      }        
       targets.Enqueue(target);
     }    
   }
@@ -67,6 +64,8 @@ public class TargetsBehaviour : MonoBehaviour {
   }
   
   public void GameOver() {
+    hitString = "";
+    
     TargetBehaviour[] allTargets = GetComponentsInChildren<TargetBehaviour>();
     TargetBehaviour target;
     for (int i = allTargets.Length - 1; i >= 0; i--) {
@@ -98,12 +97,7 @@ public class TargetsBehaviour : MonoBehaviour {
       StartCoroutine(SpawnTargets());
     }
   }
-  
-  public void Results(string str) {
-    Debug.Log("Results: " + str);
-  
-  }
-  
+   
   private int GetUnusedNumber() {
     int number;
     
@@ -140,7 +134,7 @@ public class TargetsBehaviour : MonoBehaviour {
     spawningTargets = true;
     TargetBehaviour target;
     while (targets.Count > 0) {
-      yield return new WaitForSeconds(Random.Range(0.25f, 1f));
+      yield return new WaitForSeconds(Random.Range(0.75f, 2f));
 
       target = targets.Dequeue();
       target.row = Mathf.FloorToInt(Random.Range(0,3));
