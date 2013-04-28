@@ -16,8 +16,11 @@ ModelImporter:
     400008: transform1
     400010: transform2
     2300000: polySurface1
+    2300002: //RootNode
     3300000: polySurface1
+    3300002: //RootNode
     4300000: polySurface1
+    4300002: target
     9500000: //RootNode
   materials:
     importMaterials: 0

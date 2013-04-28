@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TargetsBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../lost-toys/Assets/Scripts/Game/SliceBehaviour.cs">
     <Files>
-      <File FileName="Assets/Scripts/Movement/CameraControl.js" Line="34" Column="4" />
-      <File FileName="Assets/Scripts/Movement/MechMovementMotor.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Movement/PlayerMoveController.js" Line="100" Column="2" />
-      <File FileName="Assets/Scripts/Movement/Joystick.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TargetsBehavior.cs" Line="33" Column="31" />
-      <File FileName="Assets/Scripts/TargetBehaviour.cs" Line="7" Column="21" />
+      <File FileName="../lost-toys/Assets/Scripts/Game/LevelBehaviour.cs" Line="108" Column="18" />
+      <File FileName="../lost-toys/Assets/Scripts/Game/GameController.cs" Line="1" Column="1" />
+      <File FileName="../lost-toys/Assets/Scripts/Game/SetBehaviour.cs" Line="74" Column="62" />
+      <File FileName="../lost-toys/Assets/Scripts/Game/SliceBehaviour.cs" Line="697" Column="32" />
+      <File FileName="Assets/Scripts/TargetBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TargetsBehaviour.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +15,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="TargetsBehavior.cs" selected="True" />
+                <Node name="TargetsBehaviour.cs" selected="True" />
               </Node>
             </Node>
           </Node>

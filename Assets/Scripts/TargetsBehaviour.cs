@@ -19,6 +19,7 @@ public class TargetsBehaviour : MonoBehaviour {
   
   private int targetCapacity = 80;
   private bool spawningTargets = false;
+  private string hitString;
   
   private GameObject targetPrefab;
   
@@ -33,6 +34,7 @@ public class TargetsBehaviour : MonoBehaviour {
   public void Start() {
     GameObject targetObject;
     TargetBehaviour target;
+    
     for (int i = targetCapacity - 1; i >= 0; i--) {
       targetObject = Instantiate(targetPrefab, Vector3.zero, orientation) as GameObject;
       targetObject.transform.parent = transform;
@@ -41,11 +43,16 @@ public class TargetsBehaviour : MonoBehaviour {
       target.renderer.enabled = false;
       target.row = Mathf.FloorToInt(Random.Range(0,3));
       target.number = GetUnusedNumber();
-      
+
+      if (i > 5) {
+        hitString += target.number + ",";
+      }        
       targets.Enqueue(target);
     }
     
     StartCoroutine(SpawnTargets());
+    
+    Application.ExternalCall("gameOver", hitString);
   }
 
   public void Update() {
