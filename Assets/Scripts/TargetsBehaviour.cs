@@ -10,8 +10,8 @@ public class TargetsBehaviour : MonoBehaviour {
 
   public int rows = 3;
   public float targetSpeed = 2;
-  public float minRate = 2;
-  public float maxRate = 4;
+  public float minRate = 0.1f;
+  public float maxRate = 0.75f;
   public float maxDistance = 5;
 
   public Vector3 direction = new Vector3(1, 0, 0);
@@ -22,7 +22,7 @@ public class TargetsBehaviour : MonoBehaviour {
   private Queue<TargetBehaviour> targets;
   private List<TargetBehaviour> activeTargets;
   
-  private int targetCapacity = 3;
+  private int targetCapacity = 80;
   private bool spawningTargets = false;
   private string hitString;
   
@@ -42,10 +42,6 @@ public class TargetsBehaviour : MonoBehaviour {
     row1Position = new Vector3(row1.position.x - row1.renderer.bounds.extents.x, row1.position.y + row1.renderer.bounds.extents.y + 0.3f, -0.46f);
     row2Position = new Vector3(row2.position.x - row2.renderer.bounds.extents.x, row2.position.y + row2.renderer.bounds.extents.y + 0.3f, -0.08f);
     
-    Debug.Log(row0Position);
-  }
-  
-  public void Start() {
     GameObject targetObject;
     TargetBehaviour target;
     
@@ -53,8 +49,7 @@ public class TargetsBehaviour : MonoBehaviour {
       targetObject = Instantiate(targetPrefab, Vector3.zero, orientation) as GameObject;
       targetObject.transform.parent = transform;
       
-      target = targetObject.GetComponent<TargetBehaviour>();      
-      target.renderer.enabled = false;
+      target = targetObject.GetComponent<TargetBehaviour>();  
       target.number = GetUnusedNumber();
       target.transform.rotation = Quaternion.Euler(0, 90, 0);
 
@@ -62,20 +57,26 @@ public class TargetsBehaviour : MonoBehaviour {
         hitString += target.number + ",";
       }        
       targets.Enqueue(target);
-    }
-    
-    StartCoroutine(SpawnTargets());
-    
-    Application.ExternalCall("gameOver", hitString);
+    }    
   }
-
+	
+  public void Enable() {
+    // transform.
+    StartCoroutine(SpawnTargets());
+  }
+  
+  public void Disable() {
+    //Application.ExternalCall("gameOver", hitString);
+  }
+  
   public void Update() {
+    Debug.Log("UPdate");
     TargetBehaviour target;
     for (int i = 0; i < activeTargets.Count; i++) {
       target = activeTargets[i];
       target.transform.Translate(direction * Time.deltaTime);
       if (Mathf.Abs(target.transform.localPosition.x) > maxDistance) {
-        target.renderer.enabled = false;
+        target.Disable();
         activeTargets.Remove(target);
         targets.Enqueue(target);
       }
@@ -131,9 +132,9 @@ public class TargetsBehaviour : MonoBehaviour {
 
       target = targets.Dequeue();
       target.row = Mathf.FloorToInt(Random.Range(0,3));
-            
       target.transform.position = transform.TransformPoint(GetInitialPosition(target.row));
-      target.renderer.enabled = true;
+      target.Enable();
+      
       activeTargets.Add(target);
       
     }

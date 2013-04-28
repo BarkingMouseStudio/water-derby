@@ -1,11 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../lost-toys/Assets/Scripts/Game/SetBehaviour.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../lost-toys/Assets/Scripts/Utils/ScreenBehaviour.cs">
     <Files>
-      <File FileName="../lost-toys/Assets/Scripts/Game/LevelBehaviour.cs" Line="124" Column="27" />
-      <File FileName="../lost-toys/Assets/Scripts/Game/GameController.cs" Line="1" Column="1" />
-      <File FileName="../lost-toys/Assets/Scripts/Game/SetBehaviour.cs" Line="21" Column="1" />
-      <File FileName="../lost-toys/Assets/Scripts/Game/SliceBehaviour.cs" Line="736" Column="31" />
+      <File FileName="../lost-toys/Assets/Scripts/Game/GameController.cs" Line="7" Column="31" />
+      <File FileName="../lost-toys/Assets/Scripts/Utils/ScreenBehaviour.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
