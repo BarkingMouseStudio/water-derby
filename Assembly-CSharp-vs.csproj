@@ -51,6 +51,9 @@
      <None Include="Assets\Resources\Shaders\BlurPassesForDof.shader" />
      <None Include="Assets\Resources\Shaders\ColoredNoise.shader" />
      <None Include="Assets\Resources\Shaders\MobileBloom.shader" />
+ <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

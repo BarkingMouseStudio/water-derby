@@ -52,6 +52,10 @@
      <None Include="Assets\Resources\Shaders\ColoredNoise.shader" />
      <None Include="Assets\Resources\Shaders\MobileBloom.shader" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{44FB2320-B8C2-7246-F1C9-7BEF8A521BD6}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	   Other similar extension points exist, see Microsoft.Common.targets.
