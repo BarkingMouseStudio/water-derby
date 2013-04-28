@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{EE508EFD-2376-3E76-0C27-E4A377150952}") = "water-derby", "Assembly-CSharp-firstpass-vs.csproj", "{6FDAA465-FED5-02CC-A3F8-51A2F81EBE99}"
+EndProject
 Project("{EE508EFD-2376-3E76-0C27-E4A377150952}") = "water-derby", "Assembly-CSharp-vs.csproj", "{A6F5EE87-B5A5-EDB4-0B30-A9E884E69E86}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FDAA465-FED5-02CC-A3F8-51A2F81EBE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FDAA465-FED5-02CC-A3F8-51A2F81EBE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FDAA465-FED5-02CC-A3F8-51A2F81EBE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FDAA465-FED5-02CC-A3F8-51A2F81EBE99}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6F5EE87-B5A5-EDB4-0B30-A9E884E69E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6F5EE87-B5A5-EDB4-0B30-A9E884E69E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F5EE87-B5A5-EDB4-0B30-A9E884E69E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -17,7 +23,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																									GlobalSection(MonoDevelopProperties) = preSolution
+																																											GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
