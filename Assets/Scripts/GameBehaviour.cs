@@ -16,6 +16,7 @@ public class GameBehaviour : MonoBehaviour {
   private bool isActiveGame = false;
   private RaycastHit[] hits;
 	
+  private float gameDuration = 10;
   private float time;
   	
   // Use this for initialization
@@ -39,26 +40,46 @@ public class GameBehaviour : MonoBehaviour {
 
 	    switch (hit.transform.name) {
 	      case "StartGame":
+	        targets.Enable();
 	        isActiveGame = true;
 	        screens.startScreenEnd();
-	        targets.Enable();
-	        
+	        targets.enabled = true;
+	        particles.enabled = true;
 	        watergun.enabled = true;
 	        time = 0;
 
 	        break;
 	      case "Play Again":
-            isActiveGame = true;
-	        screens.startScreenEnd();
 	        targets.Enable();
+            // targets.Restart();
+            isActiveGame = true;
+	        screens.successScreenEnd();
 	        
+	        targets.enabled = true;	        
 	        watergun.enabled = true;
+	        particles.enabled = true;
+	        
 	        time = 0;
 
-
-          break;
+           break;
         }
       }
+	}
+	if (isActiveGame) {
+	  time = Time.deltaTime;
+	  if (time > gameDuration) {
+	    Debug.Log("GameOver");
+	    isActiveGame = false;
+	    screens.successScreenStart();
+	    targets.enabled = false;
+	    watergun.enabled = false;
+	    particles.enabled = false;
+	    
+	    targets.GameOver();
+	    
+	  }
+	  
+	  
 	}
   }
 }

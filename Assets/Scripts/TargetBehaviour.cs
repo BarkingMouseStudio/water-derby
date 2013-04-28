@@ -7,7 +7,9 @@ public class TargetBehaviour : MonoBehaviour {
   public int number;
   
   public float hitTime = 0;
-    
+  
+  public bool isHit = false;
+  
   private Transform text;
 
   private TextMesh textMesh;
@@ -24,6 +26,15 @@ public class TargetBehaviour : MonoBehaviour {
   
   public void ResetHitTime () {
     hitTime = 0;
+    isHit = false;
+  }
+  
+  public void Update () {
+    if (isHit == false && hitTime >= 1) {
+      isHit = true;
+      StartCoroutine(RotateDown());
+    }
+  
   }
   
   public void Enable () {
@@ -37,5 +48,17 @@ public class TargetBehaviour : MonoBehaviour {
     text.renderer.enabled = false;
     transform.renderer.enabled = false;
     transform.collider.enabled = false;
+  }
+  private IEnumerator RotateDown () {
+    text.renderer.enabled = false;
+    
+    float time = 0;
+    while (Quaternion.Angle(transform.localRotation, Quaternion.identity) > Mathf.Epsilon) {
+        time += Time.deltaTime;
+        Quaternion target = Quaternion.Euler(90, 90, 0);        
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, target, time * 0.02f);
+        yield return null;
+    }
+  
   }
 }

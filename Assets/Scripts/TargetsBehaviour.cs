@@ -10,8 +10,8 @@ public class TargetsBehaviour : MonoBehaviour {
 
   public int rows = 3;
   public float targetSpeed = 2;
-  public float minRate = 0.1f;
-  public float maxRate = 0.75f;
+  public float minRate = 0;
+  public float maxRate = 0.5f;
   public float maxDistance = 5;
 
   public Vector3 direction = new Vector3(1, 0, 0);
@@ -61,16 +61,28 @@ public class TargetsBehaviour : MonoBehaviour {
   }
 	
   public void Enable() {
-    // transform.
-    StartCoroutine(SpawnTargets());
+    if (!spawningTargets && targets.Count > 0) {
+      StartCoroutine(SpawnTargets());
+    }
   }
   
-  public void Disable() {
-    //Application.ExternalCall("gameOver", hitString);
+  public void GameOver() {
+    TargetBehaviour[] allTargets = GetComponentsInChildren<TargetBehaviour>();
+    TargetBehaviour target;
+    for (int i = allTargets.Length - 1; i >= 0; i--) {
+      target = allTargets[i];
+      if (target.isHit == true) {
+        hitString += target.number + ",";
+      }
+      target.hitTime = 0;
+      target.isHit = false;
+      target.Disable();
+    }
+    Application.ExternalCall("gameOver", hitString);
+    
   }
   
   public void Update() {
-    Debug.Log("UPdate");
     TargetBehaviour target;
     for (int i = 0; i < activeTargets.Count; i++) {
       target = activeTargets[i];
@@ -128,7 +140,7 @@ public class TargetsBehaviour : MonoBehaviour {
     spawningTargets = true;
     TargetBehaviour target;
     while (targets.Count > 0) {
-      yield return new WaitForSeconds(Random.Range(minRate, maxRate));
+      yield return new WaitForSeconds(Random.Range(0.25f, 1f));
 
       target = targets.Dequeue();
       target.row = Mathf.FloorToInt(Random.Range(0,3));

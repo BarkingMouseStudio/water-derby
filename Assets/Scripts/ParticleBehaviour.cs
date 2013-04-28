@@ -8,10 +8,6 @@ public class ParticleBehaviour : MonoBehaviour {
 	Ray ray;
 	TargetBehaviour target;
 	
-	void Awake () {
-	
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,7 +17,7 @@ public class ParticleBehaviour : MonoBehaviour {
         hit = hits[i];
         Debug.Log(hit.transform.name);
         target = hit.transform.GetComponent<TargetBehaviour>();
-        target.hitTime += 0.1f; 
+        target.hitTime += 0.2f; 
       }
 	}
 }
