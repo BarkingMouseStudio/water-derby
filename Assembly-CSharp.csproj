@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\TargetBehaviour.cs" />
      <Compile Include="Assets\Scripts\TargetsBehavior.cs" />
+     <Compile Include="Assets\Scripts\WaterGunBehavior.cs" />
      <None Include="Assets\Resources\Shaders\HeightDepthOfField.shader" />
      <None Include="Assets\Resources\Shaders\BlurPassesForDof.shader" />
      <None Include="Assets\Resources\Shaders\ColoredNoise.shader" />
