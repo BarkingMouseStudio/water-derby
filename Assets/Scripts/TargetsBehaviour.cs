@@ -22,7 +22,7 @@ public class TargetsBehaviour : MonoBehaviour {
   private Queue<TargetBehaviour> targets;
   private List<TargetBehaviour> activeTargets;
   
-  private int targetCapacity = 80;
+  private int targetCapacity = 3;
   private bool spawningTargets = false;
   private string hitString;
   
@@ -38,11 +38,11 @@ public class TargetsBehaviour : MonoBehaviour {
     targets = new Queue<TargetBehaviour>(targetCapacity);
     activeTargets = new List<TargetBehaviour>(targetCapacity);	
     targetPrefab = Resources.Load("Prefabs/Target") as GameObject;	
-    row0Position = row0.position;
-    row1Position = row1.position;
-    row2Position = row2.position;
+    row0Position = new Vector3(row0.position.x - row0.renderer.bounds.extents.x, row0.position.y + row0.renderer.bounds.extents.y + 0.3f, -0.86f);
+    row1Position = new Vector3(row1.position.x - row1.renderer.bounds.extents.x, row1.position.y + row1.renderer.bounds.extents.y + 0.3f, -0.46f);
+    row2Position = new Vector3(row2.position.x - row2.renderer.bounds.extents.x, row2.position.y + row2.renderer.bounds.extents.y + 0.3f, -0.08f);
     
-    Debug.Log(row0.collider.bounds.size);
+    Debug.Log(row0Position);
   }
   
   public void Start() {
@@ -56,6 +56,7 @@ public class TargetsBehaviour : MonoBehaviour {
       target = targetObject.GetComponent<TargetBehaviour>();      
       target.renderer.enabled = false;
       target.number = GetUnusedNumber();
+      target.transform.rotation = Quaternion.Euler(0, 90, 0);
 
       if (i > 5) {
         hitString += target.number + ",";
@@ -106,6 +107,22 @@ public class TargetsBehaviour : MonoBehaviour {
     
   }
   
+  private Vector3 GetInitialPosition(int row){
+    switch (row) {
+      case 1:
+        initialPosition = row1Position; 
+        break;
+      case 2: 
+        initialPosition = row2Position;
+        break;
+      default:
+        initialPosition = row0Position;
+        break;
+    }
+    
+    return initialPosition;
+  }
+  
   private IEnumerator SpawnTargets() {
     spawningTargets = true;
     TargetBehaviour target;
@@ -114,7 +131,8 @@ public class TargetsBehaviour : MonoBehaviour {
 
       target = targets.Dequeue();
       target.row = Mathf.FloorToInt(Random.Range(0,3));
-      target.transform.position = transform.TransformPoint(initialPosition);
+            
+      target.transform.position = transform.TransformPoint(GetInitialPosition(target.row));
       target.renderer.enabled = true;
       activeTargets.Add(target);
       
