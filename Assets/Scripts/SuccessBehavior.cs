@@ -15,7 +15,7 @@ public class SuccessBehavior : MonoBehaviour {
     textMesh = GetComponentInChildren<TextMesh>();
   }
 
-	void Start () {
+	void Start() {
     SetText("100!");
 	}
 }
