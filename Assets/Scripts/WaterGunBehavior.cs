@@ -7,25 +7,21 @@ public class WaterGunBehavior : MonoBehaviour {
   private Vector3 center = Vector3.zero;
   private float centerSpeed = 1;
   private float gravity = 0.9f;
+  
+  SpringJoint springJoint;
+  
+  public void Awake () {
+    springJoint = GetComponent("Spring Joint") as SpringJoint;  
+  
+  }
 
-	void Update () {
+  public void Update () {
     if (Input.GetMouseButtonDown(0)) {
-      // Add the mouse position to center
-      var mouseViewport = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-      center = mouseViewport - prevMouse;
-
-      // Move gun center towards zero
-      center = Vector3.Lerp(center, Vector3.zero, Time.deltaTime * centerSpeed);
-      center.z = Camera.main.farClipPlane;
-
-      var aim = Camera.main.ViewportToWorldPoint(center);
-      var target = Quaternion.LookRotation(aim);
-      transform.localRotation = target;
-
-      prevMouse = mouseViewport;
+    
+    
+      var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+	  // springJoint.transform.position = ray.GetPoint(distance);
+      
     }
-
-    center *= gravity;
-	}
+  }
 }

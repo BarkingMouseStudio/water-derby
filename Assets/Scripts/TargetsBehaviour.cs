@@ -30,7 +30,7 @@ public class TargetsBehaviour : MonoBehaviour {
     activeTargets = new List<TargetBehaviour>(targetCapacity);	
     targetPrefab = Resources.Load("Prefabs/Target") as GameObject;	
   }
-
+  
   public void Start() {
     GameObject targetObject;
     TargetBehaviour target;
@@ -70,6 +70,11 @@ public class TargetsBehaviour : MonoBehaviour {
     if (!spawningTargets && targets.Count > 0) {
       StartCoroutine(SpawnTargets());
     }
+  }
+  
+  public void Results(string str) {
+    Debug.Log("Results: " + str);
+  
   }
   
   private int GetUnusedNumber() {
