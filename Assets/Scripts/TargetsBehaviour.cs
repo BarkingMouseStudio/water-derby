@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TargetsBehaviour : MonoBehaviour {
+
+  public Transform row0;
+  public Transform row1;
+  public Transform row2;
+
   public int rows = 3;
   public float targetSpeed = 2;
   public float minRate = 2;
@@ -21,6 +26,10 @@ public class TargetsBehaviour : MonoBehaviour {
   private bool spawningTargets = false;
   private string hitString;
   
+  private Vector3 row0Position;
+  private Vector3 row1Position;
+  private Vector3 row2Position;
+
   private GameObject targetPrefab;
   
   private HashSet<int> usedNumbers = new HashSet<int>();
@@ -29,6 +38,11 @@ public class TargetsBehaviour : MonoBehaviour {
     targets = new Queue<TargetBehaviour>(targetCapacity);
     activeTargets = new List<TargetBehaviour>(targetCapacity);	
     targetPrefab = Resources.Load("Prefabs/Target") as GameObject;	
+    row0Position = row0.position;
+    row1Position = row1.position;
+    row2Position = row2.position;
+    
+    Debug.Log(row0.collider.bounds.size);
   }
   
   public void Start() {
@@ -41,7 +55,6 @@ public class TargetsBehaviour : MonoBehaviour {
       
       target = targetObject.GetComponent<TargetBehaviour>();      
       target.renderer.enabled = false;
-      target.row = Mathf.FloorToInt(Random.Range(0,3));
       target.number = GetUnusedNumber();
 
       if (i > 5) {
@@ -100,6 +113,7 @@ public class TargetsBehaviour : MonoBehaviour {
       yield return new WaitForSeconds(Random.Range(minRate, maxRate));
 
       target = targets.Dequeue();
+      target.row = Mathf.FloorToInt(Random.Range(0,3));
       target.transform.position = transform.TransformPoint(initialPosition);
       target.renderer.enabled = true;
       activeTargets.Add(target);
