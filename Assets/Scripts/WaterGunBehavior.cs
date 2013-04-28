@@ -8,20 +8,24 @@ public class WaterGunBehavior : MonoBehaviour {
   private float centerSpeed = 1;
   private float gravity = 0.9f;
   
+  private Camera camera;
+  private Vector3 lookAt;
+  
   SpringJoint springJoint;
   
   public void Awake () {
     springJoint = GetComponent("Spring Joint") as SpringJoint;  
-  
+    camera = Camera.main;
   }
 
   public void Update () {
-    if (Input.GetMouseButtonDown(0)) {
+    //if (Input.GetMouseButtonDown(0)) {
     
-    
-      var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-	  // springJoint.transform.position = ray.GetPoint(distance);
+      lookAt = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
+
+      transform.LookAt(lookAt);
+
       
-    }
+   // }
   }
 }
