@@ -37,7 +37,6 @@ public class GameBehaviour : MonoBehaviour {
       hits = Physics.RaycastAll(ray, Mathf.Infinity);
       for (int i = hits.Length - 1; i >= 0; i--) {
       hit = hits[i];
-
 	    switch (hit.transform.name) {
 	      case "StartGame":
 	        targets.Enable();
@@ -61,7 +60,7 @@ public class GameBehaviour : MonoBehaviour {
 	        
 	        time = 0;
 
-           break;
+            break;
         }
       }
 	}
@@ -76,10 +75,7 @@ public class GameBehaviour : MonoBehaviour {
 	    particles.enabled = false;
 	    
 	    targets.GameOver();
-	    
-	  }
-	  
-	  
+	  }	  
 	}
   }
 }
